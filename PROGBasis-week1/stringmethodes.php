@@ -35,35 +35,61 @@ if (isset($_POST['submit'])) {
      * Voer onderstaande code in het naamveld in en kijk wat er gebeurd
      * <script>alert('Niet beveiligd tegen script-injections')</script>
      */
-
+    $script = "<script>alert('Niet beveiligd tegen script-injections')</script>";
+    echo $script;
     /*
      * OPDRACHT 2:
      * Zorg ervoor dat er geen scripts meer ingevoerd kunnen worden.
      * Hiervoor gebruik je de functie htmlspecialchars().
      * Pas elke ingevoerde variabele waarde aan met de functie htmlspecialchars().
      */
+    
     $naam = $_POST['naam'];
     $straat = $_POST['straat'];
     $huisnummer = $_POST['huisnummer'];
     $postcode = $_POST['postcode'];
     $woonplaats = $_POST['woonplaats'];
+    echo htmlspecialchars($naam);
+    echo "<br>";
+    echo htmlspecialchars($straat);
+    echo "<br>";
+    echo htmlspecialchars($huisnummer);
+    echo "<br>";
+    echo htmlspecialchars($postcode);
+    echo "<br>";
+    echo htmlspecialchars($woonplaats);
 
     /*
      * OPDRACHT 3:
      * Zorg ervoor dat de naam, straat en woonplaats met een hoofdletter beginnen
      * Hiervoor gebruik je de functie ucfirst()
-     *
+     */
+    echo "<br>";
+    echo strtoupper( ucfirst($naam));
+    echo "<br>";
+    echo strtoupper( ucfirst($straat));
+    echo "<br>";
+    echo strtoupper( ucfirst($huisnummer));
+    echo "<br>";
+    echo strtoupper( ucfirst($postcode));
+    echo "<br>";
+    echo strtoupper( ucfirst($woonplaats));
+    
+    /*
      * OPDRACHT 4:
      * Alle andere letters moeten kleine letters zijn
      * Hiervoor gebruik je de functie strtolower()
      */
-    echo
-        $naam, '<br>',
-        $straat, '<br>',
-        $huisnummer, '<br>',
-        $postcode, '<br>',
-        $woonplaats, '<br>';
-
+    echo "<br>";
+       
+        echo strtolower(
+            $naam . "<br>" .
+            $straat . "<br>" .
+            $huisnummer . "<br>" .
+            $postcode . "<br>" .
+            $woonplaats . "<br>" 
+        );
+        
     /*
      * OPDRACHT 5:
      * Check of het ingevoerde huisnummer werkelijk een nummer is.
@@ -71,6 +97,11 @@ if (isset($_POST['submit'])) {
      * Is er geen nummer ingevoerd geef dan een melding dat er een nummer moet worden ingevoerd
      */
 
+    if(is_numeric($huisnummer)){
+        echo $huisnummer;
+    }else{
+        echo "je moet een nummer toevoegen";
+    }
 }
 ?>
 
